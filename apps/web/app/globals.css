@@ -1,0 +1,5 @@
+@import '@acme/ui/theme.css';
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
