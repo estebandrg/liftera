@@ -36,3 +36,12 @@ yarn-error.log*
 # Misc
 .DS_Store
 *.pem
+
+# Agents
+.windsurf
+.claude
+.codex
+.gemini
+.github
+GEMINI.md
+CLAUDE.md

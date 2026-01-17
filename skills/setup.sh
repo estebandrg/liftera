@@ -5,6 +5,7 @@
 #   - Gemini CLI: .gemini/skills/ symlink + GEMINI.md copies
 #   - Codex (OpenAI): .codex/skills/ symlink + AGENTS.md (native)
 #   - GitHub Copilot: .github/copilot-instructions.md copy
+#   - Windsurf: .windsurf/skills/ directory copy
 #
 # Usage:
 #   ./setup.sh              # Interactive mode (select AI assistants)
@@ -32,6 +33,7 @@ SETUP_CLAUDE=false
 SETUP_GEMINI=false
 SETUP_CODEX=false
 SETUP_COPILOT=false
+SETUP_WINDSURF=false
 
 # =============================================================================
 # HELPER FUNCTIONS
@@ -48,6 +50,7 @@ show_help() {
     echo "  --gemini    Configure Gemini CLI"
     echo "  --codex     Configure Codex (OpenAI)"
     echo "  --copilot   Configure GitHub Copilot"
+    echo "  --windsurf  Configure Windsurf"
     echo "  --help      Show this help message"
     echo ""
     echo "If no options provided, runs in interactive mode."
@@ -63,8 +66,8 @@ show_menu() {
     echo -e "${CYAN}(Use numbers to toggle, Enter to confirm)${NC}"
     echo ""
 
-    local options=("Claude Code" "Gemini CLI" "Codex (OpenAI)" "GitHub Copilot")
-    local selected=(true false false false)  # Claude selected by default
+    local options=("Claude Code" "Gemini CLI" "Codex (OpenAI)" "GitHub Copilot" "Windsurf")
+    local selected=(true false false false false)  # Claude selected by default
 
     while true; do
         for i in "${!options[@]}"; do
@@ -78,7 +81,7 @@ show_menu() {
         echo -e "  ${YELLOW}a${NC}. Select all"
         echo -e "  ${YELLOW}n${NC}. Select none"
         echo ""
-        echo -n "Toggle (1-4, a, n) or Enter to confirm: "
+        echo -n "Toggle (1-5, a, n) or Enter to confirm: "
 
         read -r choice
 
@@ -87,20 +90,22 @@ show_menu() {
             2) selected[1]=$([ "${selected[1]}" = true ] && echo false || echo true) ;;
             3) selected[2]=$([ "${selected[2]}" = true ] && echo false || echo true) ;;
             4) selected[3]=$([ "${selected[3]}" = true ] && echo false || echo true) ;;
-            a|A) selected=(true true true true) ;;
-            n|N) selected=(false false false false) ;;
+            5) selected[4]=$([ "${selected[4]}" = true ] && echo false || echo true) ;;
+            a|A) selected=(true true true true true) ;;
+            n|N) selected=(false false false false false) ;;
             "") break ;;
             *) echo -e "${RED}Invalid option${NC}" ;;
         esac
 
         # Move cursor up to redraw menu
-        echo -en "\033[10A\033[J"
+        echo -en "\033[11A\033[J"
     done
 
     SETUP_CLAUDE=${selected[0]}
     SETUP_GEMINI=${selected[1]}
     SETUP_CODEX=${selected[2]}
     SETUP_COPILOT=${selected[3]}
+    SETUP_WINDSURF=${selected[4]}
 }
 
 setup_claude() {
@@ -169,6 +174,30 @@ setup_copilot() {
     fi
 }
 
+setup_windsurf() {
+    local target="$REPO_ROOT/.windsurf/skills"
+
+    if [ ! -d "$REPO_ROOT/.windsurf" ]; then
+        mkdir -p "$REPO_ROOT/.windsurf"
+    fi
+
+    if [ -d "$target" ]; then
+        rm -rf "$target"
+    fi
+
+    mkdir -p "$target"
+    
+    # Copy all skill directories
+    for skill_dir in "$SKILLS_SOURCE"/*; do
+        if [ -d "$skill_dir" ] && [ -f "$skill_dir/SKILL.md" ]; then
+            local skill_name=$(basename "$skill_dir")
+            cp -r "$skill_dir" "$target/$skill_name"
+        fi
+    done
+
+    echo -e "${GREEN}  ✓ Copied skills to .windsurf/skills/${NC}"
+}
+
 copy_agents_md() {
     local target_name="$1"
     local agents_files
@@ -197,6 +226,7 @@ while [[ $# -gt 0 ]]; do
             SETUP_GEMINI=true
             SETUP_CODEX=true
             SETUP_COPILOT=true
+            SETUP_WINDSURF=true
             shift
             ;;
         --claude)
@@ -213,6 +243,10 @@ while [[ $# -gt 0 ]]; do
             ;;
         --copilot)
             SETUP_COPILOT=true
+            shift
+            ;;
+        --windsurf)
+            SETUP_WINDSURF=true
             shift
             ;;
         --help|-h)
@@ -247,13 +281,13 @@ echo -e "${BLUE}Found $SKILL_COUNT skills to configure${NC}"
 echo ""
 
 # Interactive mode if no flags provided
-if [ "$SETUP_CLAUDE" = false ] && [ "$SETUP_GEMINI" = false ] && [ "$SETUP_CODEX" = false ] && [ "$SETUP_COPILOT" = false ]; then
+if [ "$SETUP_CLAUDE" = false ] && [ "$SETUP_GEMINI" = false ] && [ "$SETUP_CODEX" = false ] && [ "$SETUP_COPILOT" = false ] && [ "$SETUP_WINDSURF" = false ]; then
     show_menu
     echo ""
 fi
 
 # Check if at least one selected
-if [ "$SETUP_CLAUDE" = false ] && [ "$SETUP_GEMINI" = false ] && [ "$SETUP_CODEX" = false ] && [ "$SETUP_COPILOT" = false ]; then
+if [ "$SETUP_CLAUDE" = false ] && [ "$SETUP_GEMINI" = false ] && [ "$SETUP_CODEX" = false ] && [ "$SETUP_COPILOT" = false ] && [ "$SETUP_WINDSURF" = false ]; then
     echo -e "${YELLOW}No AI assistants selected. Nothing to do.${NC}"
     exit 0
 fi
@@ -265,6 +299,7 @@ TOTAL=0
 [ "$SETUP_GEMINI" = true ] && TOTAL=$((TOTAL + 1))
 [ "$SETUP_CODEX" = true ] && TOTAL=$((TOTAL + 1))
 [ "$SETUP_COPILOT" = true ] && TOTAL=$((TOTAL + 1))
+[ "$SETUP_WINDSURF" = true ] && TOTAL=$((TOTAL + 1))
 
 if [ "$SETUP_CLAUDE" = true ]; then
     echo -e "${YELLOW}[$STEP/$TOTAL] Setting up Claude Code...${NC}"
@@ -287,6 +322,12 @@ fi
 if [ "$SETUP_COPILOT" = true ]; then
     echo -e "${YELLOW}[$STEP/$TOTAL] Setting up GitHub Copilot...${NC}"
     setup_copilot
+    STEP=$((STEP + 1))
+fi
+
+if [ "$SETUP_WINDSURF" = true ]; then
+    echo -e "${YELLOW}[$STEP/$TOTAL] Setting up Windsurf...${NC}"
+    setup_windsurf
 fi
 
 # =============================================================================
@@ -300,6 +341,7 @@ echo "Configured:"
 [ "$SETUP_CODEX" = true ] && echo "  • Codex (OpenAI): .codex/skills/ + AGENTS.md (native)"
 [ "$SETUP_GEMINI" = true ] && echo "  • Gemini CLI:     .gemini/skills/ + GEMINI.md"
 [ "$SETUP_COPILOT" = true ] && echo "  • GitHub Copilot: .github/copilot-instructions.md"
+[ "$SETUP_WINDSURF" = true ] && echo "  • Windsurf:       .windsurf/skills/"
 echo ""
 echo -e "${BLUE}Note: Restart your AI assistant to load the skills.${NC}"
 echo -e "${BLUE}      AGENTS.md is the source of truth - edit it, then re-run this script.${NC}"
