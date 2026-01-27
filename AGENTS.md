@@ -22,14 +22,15 @@ Use these skills for detailed patterns on-demand:
 
 ### Liftera-Specific Skills
 
-| Skill                  | Description                                   | URL                                              |
-| ---------------------- | --------------------------------------------- | ------------------------------------------------ |
-| `liftera-architecture` | Monorepo architecture patterns and boundaries | [SKILL.md](skills/liftera-architecture/SKILL.md) |
-| `liftera-ui`           | Shared UI with Gluestack UI + `@acme/ui`      | [SKILL.md](skills/liftera-ui/SKILL.md)           |
-| `package-manager`      | pnpm workspace rules and dependency placement | [SKILL.md](skills/package-manager/SKILL.md)      |
-| `nativewind-v4`        | NativeWind v4 cross-platform styling patterns | [SKILL.md](skills/nativewind-v4/SKILL.md)        |
-| `expo-router`          | Expo Router file-based routing and navigation | [SKILL.md](skills/expo-router/SKILL.md)          |
-| `turborepo`            | Turborepo tasks workflow (`turbo.json`)       | [SKILL.md](skills/turborepo/SKILL.md)            |
+| Skill                  | Description                                    | URL                                              |
+| ---------------------- | ---------------------------------------------- | ------------------------------------------------ |
+| `liftera-architecture` | Monorepo architecture patterns and boundaries  | [SKILL.md](skills/liftera-architecture/SKILL.md) |
+| `liftera-clean-arch`   | Clean Architecture for business logic features | [SKILL.md](skills/liftera-clean-arch/SKILL.md)   |
+| `liftera-ui`           | Shared UI with Gluestack UI + `@liftera/ui`    | [SKILL.md](skills/liftera-ui/SKILL.md)           |
+| `package-manager`      | pnpm workspace rules and dependency placement  | [SKILL.md](skills/package-manager/SKILL.md)      |
+| `nativewind-v4`        | NativeWind v4 cross-platform styling patterns  | [SKILL.md](skills/nativewind-v4/SKILL.md)        |
+| `expo-router`          | Expo Router file-based routing and navigation  | [SKILL.md](skills/expo-router/SKILL.md)          |
+| `turborepo`            | Turborepo tasks workflow (`turbo.json`)        | [SKILL.md](skills/turborepo/SKILL.md)            |
 
 ### Meta Skills
 
@@ -46,10 +47,13 @@ When performing these actions, ALWAYS invoke the corresponding skill FIRST:
 | Adding new packages/apps or moving code across boundaries | `liftera-architecture` |
 | Adding/updating dependencies in the monorepo              | `package-manager`      |
 | App Router / Server Actions                               | `nextjs-15`            |
+| Creating business logic, use cases, or repositories       | `liftera-clean-arch`   |
+| Creating domain entities or value objects                 | `liftera-clean-arch`   |
 | Creating new skills                                       | `skill-creator`        |
 | Creating/modifying shared UI components (`packages/ui`)   | `liftera-ui`           |
 | Cross-app or cross-package architectural decisions        | `liftera-architecture` |
 | General Liftera development questions                     | `liftera-architecture` |
+| Implementing data access or external service integrations | `liftera-clean-arch`   |
 | Using Zustand stores                                      | `zustand-5`            |
 | Working with Expo Router navigation                       | `expo-router`          |
 | Working with NativeWind styles                            | `nativewind-v4`        |
@@ -68,7 +72,7 @@ Liftera is a modern monorepo that shares UI and code between web (Next.js) and m
 | ---------- | -------------- | --------------------------------------------------- |
 | Web App    | `apps/web/`    | Next.js 15, React 19, React Native Web, NativeWind  |
 | Mobile App | `apps/mobile/` | Expo 54, React Native 0.81, Expo Router, NativeWind |
-| Shared UI  | `packages/ui/` | `@acme/ui`, Gluestack UI, NativeWind                |
+| Shared UI  | `packages/ui/` | `@liftera/ui`, Gluestack UI, NativeWind             |
 
 ---
 

@@ -16,7 +16,7 @@
     "preset": "jest-expo"
   },
   "dependencies": {
-    "@acme/ui": "workspace:*",
+    "@liftera/ui": "workspace:*",
     "@expo/html-elements": "^0.12.5",
     "@expo/metro-runtime": "^6.1.2",
     "@expo/vector-icons": "^15.0.2",

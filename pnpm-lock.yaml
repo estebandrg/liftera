@@ -31,9 +31,6 @@ importers:
 
   apps/mobile:
     dependencies:
-      "@acme/ui":
-        specifier: workspace:*
-        version: link:../../packages/ui
       "@expo/html-elements":
         specifier: ^0.12.5
         version: 0.12.5
@@ -55,6 +52,9 @@ importers:
       "@legendapp/motion":
         specifier: ^2.4.0
         version: 2.5.3(nativewind@4.2.1(react-native-reanimated@4.1.6(@babel/core@7.28.5)(react-native-worklets@0.5.1(@babel/core@7.28.5)(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0))(react-native-safe-area-context@5.6.2(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0))(react-native-svg@15.12.1(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0)(tailwindcss@3.4.19(yaml@2.8.2)))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0)
+      "@liftera/ui":
+        specifier: workspace:*
+        version: link:../../packages/ui
       "@react-aria/utils":
         specifier: ^3.29.0
         version: 3.32.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -161,9 +161,6 @@ importers:
 
   apps/web:
     dependencies:
-      "@acme/ui":
-        specifier: workspace:*
-        version: link:../../packages/ui
       "@expo/html-elements":
         specifier: ^0.12.5
         version: 0.12.5
@@ -182,6 +179,9 @@ importers:
       "@legendapp/motion":
         specifier: ^2.4.0
         version: 2.5.3(nativewind@4.2.1(react-native-safe-area-context@5.6.2(react-native@0.83.1(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.2.3))(react@19.2.3))(react-native-svg@15.12.1(react-native@0.83.1(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.2.3))(react@19.2.3))(react-native@0.83.1(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.2.3))(react@19.2.3)(tailwindcss@3.4.19(yaml@2.8.2)))(react-native@0.83.1(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.2.3))(react@19.2.3)
+      "@liftera/ui":
+        specifier: workspace:*
+        version: link:../../packages/ui
       dom-helpers:
         specifier: ^5.2.1
         version: 5.2.1
@@ -260,6 +260,88 @@ importers:
         version: 3.4.19(yaml@2.8.2)
       typescript:
         specifier: ^5
+        version: 5.9.2
+
+  packages/adapters:
+    dependencies:
+      "@liftera/application":
+        specifier: workspace:*
+        version: link:../application
+      "@liftera/core":
+        specifier: workspace:*
+        version: link:../core
+      "@liftera/shared":
+        specifier: workspace:*
+        version: link:../shared
+      zod:
+        specifier: ^3.23.8
+        version: 3.25.76
+    devDependencies:
+      typescript:
+        specifier: 5.9.2
+        version: 5.9.2
+
+  packages/application:
+    dependencies:
+      "@liftera/core":
+        specifier: workspace:*
+        version: link:../core
+      "@liftera/di":
+        specifier: workspace:*
+        version: link:../di
+      "@liftera/shared":
+        specifier: workspace:*
+        version: link:../shared
+    devDependencies:
+      typescript:
+        specifier: 5.9.2
+        version: 5.9.2
+
+  packages/core:
+    devDependencies:
+      typescript:
+        specifier: 5.9.2
+        version: 5.9.2
+
+  packages/di:
+    dependencies:
+      reflect-metadata:
+        specifier: ^0.2.2
+        version: 0.2.2
+      tsyringe:
+        specifier: ^4.8.0
+        version: 4.10.0
+    devDependencies:
+      typescript:
+        specifier: 5.9.2
+        version: 5.9.2
+
+  packages/infrastructure:
+    dependencies:
+      "@liftera/application":
+        specifier: workspace:*
+        version: link:../application
+      "@liftera/core":
+        specifier: workspace:*
+        version: link:../core
+      "@liftera/di":
+        specifier: workspace:*
+        version: link:../di
+      "@liftera/shared":
+        specifier: workspace:*
+        version: link:../shared
+      "@supabase/supabase-js":
+        specifier: ^2.93.1
+        version: 2.93.1
+    devDependencies:
+      typescript:
+        specifier: 5.9.2
+        version: 5.9.2
+
+  packages/shared:
+    devDependencies:
+      typescript:
+        specifier: 5.9.2
         version: 5.9.2
 
   packages/ui:
@@ -3662,6 +3744,48 @@ packages:
         integrity: sha512-V4BG07kuYSUkTCSBHG8G8TNhM+F19jXFWnQtzj+we8DrkpSBCee9Z3Ms8yiGer/dlmhe35/Xdgyo3/0rQKg7YA==,
       }
 
+  "@supabase/auth-js@2.93.1":
+    resolution:
+      {
+        integrity: sha512-pC0Ek4xk4z6q7A/3+UuZ/eYgfFUUQTg3DhapzrAgJnFGDJDFDyGCj6v9nIz8+3jfLqSZ3QKGe6AoEodYjShghg==,
+      }
+    engines: { node: ">=20.0.0" }
+
+  "@supabase/functions-js@2.93.1":
+    resolution:
+      {
+        integrity: sha512-Ott2IcIXHGupaC0nX9WNEiJAX4OdlGRu9upkkURaQHbaLdz9JuCcHxlwTERgtgjMpikbIWHfMM1M9QTQFYABiA==,
+      }
+    engines: { node: ">=20.0.0" }
+
+  "@supabase/postgrest-js@2.93.1":
+    resolution:
+      {
+        integrity: sha512-uRKKQJBDnfi6XFNFPNMh9+u3HT2PCgp065PcMPmG7e0xGuqvLtN89QxO2/SZcGbw2y1+mNBz0yUs5KmyNqF2fA==,
+      }
+    engines: { node: ">=20.0.0" }
+
+  "@supabase/realtime-js@2.93.1":
+    resolution:
+      {
+        integrity: sha512-2WaP/KVHPlQDjWM6qe4wOZz6zSRGaXw1lfXf4thbfvk3C3zPPKqXRyspyYnk3IhphyxSsJ2hQ/cXNOz48008tg==,
+      }
+    engines: { node: ">=20.0.0" }
+
+  "@supabase/storage-js@2.93.1":
+    resolution:
+      {
+        integrity: sha512-3KVwd4S1i1BVPL6KIywe5rnruNQXSkLyvrdiJmwnqwbCcDujQumARdGWBPesqCjOPKEU2M9ORWKAsn+2iLzquA==,
+      }
+    engines: { node: ">=20.0.0" }
+
+  "@supabase/supabase-js@2.93.1":
+    resolution:
+      {
+        integrity: sha512-FJTgS5s0xEgRQ3u7gMuzGObwf3jA4O5Ki/DgCDXx94w1pihLM4/WG3XFa4BaCJYfuzLxLcv6zPPA5tDvBUjAUg==,
+      }
+    engines: { node: ">=20.0.0" }
+
   "@swc/helpers@0.5.15":
     resolution:
       {
@@ -3910,6 +4034,12 @@ packages:
         integrity: sha512-lX7HFZeHf4QG/J7tBZqrCAXwz9J5RD56Y6MpP0eJkka8p+K0RY/yBTW7CYFJ4VGCclxqOLKmiGP5juQc6MKgcw==,
       }
 
+  "@types/phoenix@1.6.7":
+    resolution:
+      {
+        integrity: sha512-oN9ive//QSBkf19rfDv45M7eZPi0eEXylht2OLEXicu5b4KoQ1OzXIw+xDSGWxSxe1JmepRR/ZH283vsu518/Q==,
+      }
+
   "@types/react-dom@19.2.2":
     resolution:
       {
@@ -3940,6 +4070,12 @@ packages:
     resolution:
       {
         integrity: sha512-/Ad8+nIOV7Rl++6f1BdKxFSMgmoqEoYbHRpPcx3JEfv8VRsQe9Z4mCXeJBzxs7mbHY/XOZZuXlRNfhpVPbs6ZA==,
+      }
+
+  "@types/ws@8.18.1":
+    resolution:
+      {
+        integrity: sha512-ThVF6DCVhA8kUGy+aazFQ4kXQ7E1Ty7A3ypFOe0IcJV8O/M511G99AW24irKrW56Wt44yG9+ij8FaqoBGkuBXg==,
       }
 
   "@types/yargs-parser@21.0.3":
@@ -6810,6 +6946,13 @@ packages:
         integrity: sha512-WDC/ui2VVRrz3jOVi+XtjqkDjiVjTtFaAGiW37k6b+ohyQ5wYDOGkvCZa8+H0nx3gyvv0+BST9xuOgIyGQ00gw==,
       }
 
+  iceberg-js@0.8.1:
+    resolution:
+      {
+        integrity: sha512-1dhVQZXhcHje7798IVM+xoo/1ZdVfzOMIc8/rgVSijRK38EDqOJoGula9N/8ZI5RD8QTxNQtK/Gozpr+qUqRRA==,
+      }
+    engines: { node: ">=20.0.0" }
+
   iconv-lite@0.6.3:
     resolution:
       {
@@ -9399,6 +9542,12 @@ packages:
       }
     engines: { node: ">=8.10.0" }
 
+  reflect-metadata@0.2.2:
+    resolution:
+      {
+        integrity: sha512-urBwgfrvVP/eAyXx4hluJivBKzuEbSQs9rKWCrCkbSxNv8mxPcUZKeuoF3Uy4mJl3Lwprp6yy5/39VWigZ4K6Q==,
+      }
+
   reflect.getprototypeof@1.0.10:
     resolution:
       {
@@ -10409,11 +10558,24 @@ packages:
         integrity: sha512-2Ac2RgzDe/cn48GvOe3M+o82pEFewD3UPbyoUHHdKasHwJKjds4fLXWf/Ux5kATBKN20oaFGu+jbElp1pos0mg==,
       }
 
+  tslib@1.14.1:
+    resolution:
+      {
+        integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==,
+      }
+
   tslib@2.8.1:
     resolution:
       {
         integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==,
       }
+
+  tsyringe@4.10.0:
+    resolution:
+      {
+        integrity: sha512-axr3IdNuVIxnaK5XGEUFTu3YmAQ6lllgrvqfEoR16g/HGnYY/6We4oWENtAnzK6/LpJ2ur9PAb80RBt7/U4ugw==,
+      }
+    engines: { node: ">= 6.0.0" }
 
   turbo-darwin-64@2.7.2:
     resolution:
@@ -10532,6 +10694,7 @@ packages:
         integrity: sha512-CWBzXQrc/qOkhidw1OzBTQuYRbfyxDXJMVJ1XNwUHGROVmuaeiEm3OslpZ1RV96d7SKKjZKrSJu3+t/xlw3R9A==,
       }
     engines: { node: ">=14.17" }
+    hasBin: true
 
   ua-parser-js@1.0.41:
     resolution:
@@ -11049,6 +11212,12 @@ packages:
         integrity: sha512-4LCcse/U2MHZ63HAJVE+v71o7yOdIe4cZ70Wpf8D/IyjDKYQLV5GD46B+hSTjJsvV5PztjvHoU580EftxjDZFQ==,
       }
     engines: { node: ">=12.20" }
+
+  zod@3.25.76:
+    resolution:
+      {
+        integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==,
+      }
 
 snapshots:
   "@0no-co/graphql.web@1.2.0": {}
@@ -15947,6 +16116,44 @@ snapshots:
     dependencies:
       "@sinonjs/commons": 3.0.1
 
+  "@supabase/auth-js@2.93.1":
+    dependencies:
+      tslib: 2.8.1
+
+  "@supabase/functions-js@2.93.1":
+    dependencies:
+      tslib: 2.8.1
+
+  "@supabase/postgrest-js@2.93.1":
+    dependencies:
+      tslib: 2.8.1
+
+  "@supabase/realtime-js@2.93.1":
+    dependencies:
+      "@types/phoenix": 1.6.7
+      "@types/ws": 8.18.1
+      tslib: 2.8.1
+      ws: 8.18.3
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+
+  "@supabase/storage-js@2.93.1":
+    dependencies:
+      iceberg-js: 0.8.1
+      tslib: 2.8.1
+
+  "@supabase/supabase-js@2.93.1":
+    dependencies:
+      "@supabase/auth-js": 2.93.1
+      "@supabase/functions-js": 2.93.1
+      "@supabase/postgrest-js": 2.93.1
+      "@supabase/realtime-js": 2.93.1
+      "@supabase/storage-js": 2.93.1
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+
   "@swc/helpers@0.5.15":
     dependencies:
       tslib: 2.8.1
@@ -16056,7 +16263,7 @@ snapshots:
 
   "@types/graceful-fs@4.1.9":
     dependencies:
-      "@types/node": 22.15.3
+      "@types/node": 20.19.27
 
   "@types/hammerjs@2.0.46": {}
 
@@ -16088,6 +16295,8 @@ snapshots:
     dependencies:
       undici-types: 6.21.0
 
+  "@types/phoenix@1.6.7": {}
+
   "@types/react-dom@19.2.2(@types/react@19.1.17)":
     dependencies:
       "@types/react": 19.1.17
@@ -16114,6 +16323,10 @@ snapshots:
   "@types/stack-utils@2.0.3": {}
 
   "@types/tough-cookie@4.0.5": {}
+
+  "@types/ws@8.18.1":
+    dependencies:
+      "@types/node": 20.19.27
 
   "@types/yargs-parser@21.0.3": {}
 
@@ -16840,7 +17053,7 @@ snapshots:
 
   chrome-launcher@0.15.2:
     dependencies:
-      "@types/node": 22.15.3
+      "@types/node": 20.19.27
       escape-string-regexp: 4.0.0
       is-wsl: 2.2.0
       lighthouse-logger: 1.4.2
@@ -16849,7 +17062,7 @@ snapshots:
 
   chromium-edge-launcher@0.2.0:
     dependencies:
-      "@types/node": 22.15.3
+      "@types/node": 20.19.27
       escape-string-regexp: 4.0.0
       is-wsl: 2.2.0
       lighthouse-logger: 1.4.2
@@ -18412,6 +18625,8 @@ snapshots:
 
   hyphenate-style-name@1.1.0: {}
 
+  iceberg-js@0.8.1: {}
+
   iconv-lite@0.6.3:
     dependencies:
       safer-buffer: 2.1.2
@@ -18681,7 +18896,7 @@ snapshots:
       "@jest/expect": 29.7.0
       "@jest/test-result": 29.7.0
       "@jest/types": 29.6.3
-      "@types/node": 22.15.3
+      "@types/node": 20.19.27
       chalk: 4.1.2
       co: 4.6.0
       dedent: 1.7.1
@@ -19019,7 +19234,7 @@ snapshots:
 
   jest-worker@29.7.0:
     dependencies:
-      "@types/node": 22.15.3
+      "@types/node": 20.19.27
       jest-util: 29.7.0
       merge-stream: 2.0.0
       supports-color: 8.1.1
@@ -20612,6 +20827,8 @@ snapshots:
     dependencies:
       picomatch: 2.3.1
 
+  reflect-metadata@0.2.2: {}
+
   reflect.getprototypeof@1.0.10:
     dependencies:
       call-bind: 1.0.8
@@ -21258,7 +21475,13 @@ snapshots:
       minimist: 1.2.8
       strip-bom: 3.0.0
 
+  tslib@1.14.1: {}
+
   tslib@2.8.1: {}
+
+  tsyringe@4.10.0:
+    dependencies:
+      tslib: 1.14.1
 
   turbo-darwin-64@2.7.2:
     optional: true
@@ -21632,3 +21855,5 @@ snapshots:
   yocto-queue@0.1.0: {}
 
   yocto-queue@1.2.2: {}
+
+  zod@3.25.76: {}

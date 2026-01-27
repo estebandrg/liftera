@@ -1,0 +1,20 @@
+{
+  "name": "@liftera/infrastructure",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@liftera/application": "workspace:*",
+    "@liftera/core": "workspace:*",
+    "@liftera/di": "workspace:*",
+    "@liftera/shared": "workspace:*",
+    "@supabase/supabase-js": "^2.93.1"
+  },
+  "devDependencies": {
+    "typescript": "5.9.2"
+  }
+}

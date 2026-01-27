@@ -1,7 +1,7 @@
 ---
 name: liftera-ui
 description: >
-  Liftera UI conventions: Gluestack UI + @acme/ui shared components.
+  Liftera UI conventions: Gluestack UI + @liftera/ui shared components.
   Trigger: When creating or modifying shared UI components, design system primitives, or cross-platform styling in packages/ui.
 license: Apache-2.0
 metadata:
@@ -37,5 +37,5 @@ allowed-tools: Read, Edit, Write, Glob, Grep, Bash, WebFetch, WebSearch, Task
 ## Imports & Usage
 
 - **ALWAYS** import shared components via the package name (example from README):
-  - `@acme/ui/gluestack/*`
-  - `@acme/ui/components/*`
+  - `@liftera/ui/gluestack/*`
+  - `@liftera/ui/components/*`

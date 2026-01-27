@@ -1,0 +1,1 @@
+export { registerInfrastructure } from "./registry";

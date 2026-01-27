@@ -1,14 +1,12 @@
-"use client"
+"use client";
 
-import { DemoShowcase } from "@acme/ui/components/demo-showcase";
+import { DemoShowcase } from "@liftera/ui/components/demo-showcase";
 
 export default function Home() {
   return (
-    <main className='min-h-screen bg-background-0'>
+    <main className="min-h-screen bg-background-0">
       <DemoShowcase />
-      <div className="bg-se">
-
-      </div>
+      <div className="bg-se"></div>
     </main>
   );
 }

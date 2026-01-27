@@ -37,24 +37,28 @@ monorepo-next-expo-gluestack/
 ## 🛠️ Tech Stack
 
 ### Core
+
 - **Node.js**: ≥18.0.0
 - **Package Manager**: PNPM 9.0.0
 - **Monorepo Tool**: Turborepo 2.7.2
 - **TypeScript**: 5.9.2
 
 ### Web (Next.js)
+
 - **Framework**: Next.js 15.3.6
 - **React**: 19.2.1
 - **React DOM**: 19.2.1
 - **React Native Web**: 0.20.0
 
 ### Mobile (Expo)
+
 - **Framework**: Expo 54.0.7
 - **React**: 19.1.0
 - **React Native**: 0.81.5
 - **Expo Router**: 6.0.4
 
 ### UI & Styling
+
 - **Design System**: Gluestack UI 3.0.12
 - **Styling**: TailwindCSS 3.4.17
 - **Cross-Platform Styles**: NativeWind 4.x
@@ -62,11 +66,13 @@ monorepo-next-expo-gluestack/
 - **Icons**: Lucide React Native 0.510.0
 
 ### Animations & Interactions
+
 - **Animations**: React Native Reanimated 4.1.0
 - **Motion**: Legend App Motion 2.4.0
 - **Gestures**: Gorhom Bottom Sheet 5.0.0-alpha.11
 
 ### Development Tools
+
 - **Linting**: ESLint 9.x
 - **Formatting**: Prettier 3.7.4
 - **Type Checking**: TypeScript strict mode
@@ -107,6 +113,7 @@ pnpm dev --filter=mobile
 ### Specific Commands
 
 #### Web (Next.js)
+
 ```bash
 cd apps/web
 pnpm dev          # Development server (http://localhost:3000)
@@ -116,6 +123,7 @@ pnpm lint         # Linting
 ```
 
 #### Mobile (Expo)
+
 ```bash
 cd apps/mobile
 pnpm dev          # Start Expo
@@ -126,7 +134,7 @@ pnpm web          # Run on web
 
 ## 📦 Package Structure
 
-### `@acme/ui`
+### `@liftera/ui`
 
 Shared component library that exports:
 
@@ -137,11 +145,11 @@ Shared component library that exports:
 
 ```typescript
 // Import Gluestack components
-import { Button, ButtonText } from '@acme/ui/gluestack/button';
-import { VStack } from '@acme/ui/gluestack/vstack';
+import { Button, ButtonText } from "@liftera/ui/gluestack/button";
+import { VStack } from "@liftera/ui/gluestack/vstack";
 
 // Import custom components
-import { DemoShowcase } from '@acme/ui/components/demo-showcase';
+import { DemoShowcase } from "@liftera/ui/components/demo-showcase";
 ```
 
 ## 🔧 Configuration
@@ -164,6 +172,7 @@ Both applications share the same Tailwind configuration, enabling consistent sty
 ### Turborepo
 
 Configured for:
+
 - ✅ Intelligent build caching
 - ✅ Parallel task execution
 - ✅ Package dependencies
@@ -171,7 +180,7 @@ Configured for:
 
 ## 📱 Available Components
 
-The `@acme/ui` package includes Gluestack UI components:
+The `@liftera/ui` package includes Gluestack UI components:
 
 - **Layout**: Box, VStack, HStack, Center, Divider
 - **Typography**: Heading, Text

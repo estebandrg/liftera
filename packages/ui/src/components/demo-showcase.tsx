@@ -1,24 +1,29 @@
-'use client';
-import React, { useState } from 'react';
-import { Button, ButtonText } from '../gluestack/button';
-import { VStack } from '../gluestack/vstack';
-import { HStack } from '../gluestack/hstack';
-import { Heading } from '../gluestack/heading';
-import { Text } from '../gluestack/text';
-import { Divider } from '../gluestack/divider';
-import { Box } from '../gluestack/box';
-import { Badge, BadgeText } from '../gluestack/badge';
-import { Avatar, AvatarFallbackText, AvatarImage } from '../gluestack/avatar';
-import { Input, InputField } from '../gluestack/input';
-import { Checkbox, CheckboxIndicator, CheckboxLabel, CheckboxIcon } from '../gluestack/checkbox';
-import { Switch } from '../gluestack/switch';
-import { Alert, AlertText, AlertIcon } from '../gluestack/alert';
-import { Card } from '../gluestack/card';
+"use client";
+import React, { useState } from "react";
+import { Button, ButtonText } from "../gluestack/button";
+import { VStack } from "../gluestack/vstack";
+import { HStack } from "../gluestack/hstack";
+import { Heading } from "../gluestack/heading";
+import { Text } from "../gluestack/text";
+import { Divider } from "../gluestack/divider";
+import { Box } from "../gluestack/box";
+import { Badge, BadgeText } from "../gluestack/badge";
+import { Avatar, AvatarFallbackText, AvatarImage } from "../gluestack/avatar";
+import { Input, InputField } from "../gluestack/input";
+import {
+  Checkbox,
+  CheckboxIndicator,
+  CheckboxLabel,
+  CheckboxIcon,
+} from "../gluestack/checkbox";
+import { Switch } from "../gluestack/switch";
+import { Alert, AlertText, AlertIcon } from "../gluestack/alert";
+import { Card } from "../gluestack/card";
 
 export function DemoShowcase() {
   const [isChecked, setIsChecked] = useState(false);
   const [isSwitchEnabled, setIsSwitchEnabled] = useState(false);
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
 
   return (
     <VStack space="2xl" className="p-6 max-w-4xl mx-auto">
@@ -43,7 +48,7 @@ export function DemoShowcase() {
         <Text className="text-typography-600">
           Different button variants and actions
         </Text>
-        
+
         <VStack space="md">
           <HStack space="md" className="flex-wrap">
             <Button action="primary" variant="solid" size="md">
@@ -142,7 +147,7 @@ export function DemoShowcase() {
       {/* Form Controls Section */}
       <VStack space="lg">
         <Heading size="2xl">Form Controls</Heading>
-        
+
         <VStack space="md" className="w-full max-w-md">
           <VStack space="sm">
             <Text bold>Input Field</Text>
@@ -171,12 +176,10 @@ export function DemoShowcase() {
               <CheckboxIndicator>
                 <CheckboxIcon />
               </CheckboxIndicator>
-              <CheckboxLabel>
-                I accept the terms and conditions
-              </CheckboxLabel>
+              <CheckboxLabel>I accept the terms and conditions</CheckboxLabel>
             </Checkbox>
             <Text size="sm" className="text-typography-500">
-              Status: {isChecked ? 'Checked' : 'Unchecked'}
+              Status: {isChecked ? "Checked" : "Unchecked"}
             </Text>
           </VStack>
 
@@ -188,9 +191,7 @@ export function DemoShowcase() {
                 onValueChange={setIsSwitchEnabled}
                 size="md"
               />
-              <Text>
-                {isSwitchEnabled ? 'Enabled' : 'Disabled'}
-              </Text>
+              <Text>{isSwitchEnabled ? "Enabled" : "Disabled"}</Text>
             </HStack>
           </VStack>
         </VStack>
@@ -204,30 +205,22 @@ export function DemoShowcase() {
         <VStack space="md" className="w-full">
           <Alert action="info" variant="solid">
             <AlertIcon />
-            <AlertText>
-              This is an informative alert
-            </AlertText>
+            <AlertText>This is an informative alert</AlertText>
           </Alert>
 
           <Alert action="success" variant="solid">
             <AlertIcon />
-            <AlertText>
-              Operation completed successfully!
-            </AlertText>
+            <AlertText>Operation completed successfully!</AlertText>
           </Alert>
 
           <Alert action="warning" variant="solid">
             <AlertIcon />
-            <AlertText>
-              Warning: Review this information
-            </AlertText>
+            <AlertText>Warning: Review this information</AlertText>
           </Alert>
 
           <Alert action="error" variant="solid">
             <AlertIcon />
-            <AlertText>
-              Error: Something went wrong
-            </AlertText>
+            <AlertText>Error: Something went wrong</AlertText>
           </Alert>
         </VStack>
       </VStack>
@@ -242,7 +235,8 @@ export function DemoShowcase() {
             <VStack space="md">
               <Heading size="lg">Card Title</Heading>
               <Text>
-                This is an example of a card with content. Cards are useful for grouping related information.
+                This is an example of a card with content. Cards are useful for
+                grouping related information.
               </Text>
               <Button size="sm" className="self-start">
                 <ButtonText>Action</ButtonText>
@@ -263,9 +257,7 @@ export function DemoShowcase() {
                   </Text>
                 </VStack>
               </HStack>
-              <Text>
-                Card with outline variant and profile content.
-              </Text>
+              <Text>Card with outline variant and profile content.</Text>
             </VStack>
           </Card>
         </HStack>
@@ -277,24 +269,28 @@ export function DemoShowcase() {
       <VStack space="lg">
         <Heading size="2xl">Typography</Heading>
         <VStack space="md">
-          <Heading size="5xl" className="text-primary-400">Heading 5XL</Heading>
+          <Heading size="5xl" className="text-primary-400">
+            Heading 5XL
+          </Heading>
           <Heading size="4xl">Heading 4XL</Heading>
           <Heading size="3xl">Heading 3XL</Heading>
           <Heading size="2xl">Heading 2XL</Heading>
           <Heading size="xl">Heading XL</Heading>
           <Heading size="lg">Heading LG</Heading>
-          
+
           <Divider className="my-2" />
-          
-          <Text size="2xl" className='text-foreground'>Text 2XL</Text>
+
+          <Text size="2xl" className="text-foreground">
+            Text 2XL
+          </Text>
           <Text size="xl">Text XL</Text>
           <Text size="lg">Text LG</Text>
           <Text size="md">Text MD (default)</Text>
           <Text size="sm">Text SM</Text>
           <Text size="xs">Text XS</Text>
-          
+
           <Divider className="my-2" />
-          
+
           <Text bold>Bold Text</Text>
           <Text italic>Italic Text</Text>
           <Text underline>Underlined Text</Text>
@@ -308,7 +304,7 @@ export function DemoShowcase() {
       {/* Layout Section */}
       <VStack space="lg">
         <Heading size="2xl">Layout Components</Heading>
-        
+
         <VStack space="md">
           <Text bold>VStack (Vertical)</Text>
           <VStack space="sm" className="bg-background-100 p-4 rounded-lg">
@@ -334,7 +330,7 @@ export function DemoShowcase() {
             The same code works in Next.js (Web) and Expo (Mobile)
           </Text>
           <Badge action="info" variant="solid">
-            <BadgeText>@acme/ui package</BadgeText>
+            <BadgeText>@liftera/ui package</BadgeText>
           </Badge>
         </VStack>
       </Box>
